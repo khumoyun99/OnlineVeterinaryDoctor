@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_patient"
+        android:icon="@drawable/ic_patient_people"
+        android:title="@string/patient" />
+    <item
+        android:id="@+id/nav_medicine"
+        android:icon="@drawable/ic_nav_bottom_medicine"
+        android:title="@string/medicine" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile_person"
+        android:title="@string/profile" />
+
+
+</menu>

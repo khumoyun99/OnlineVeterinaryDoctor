@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_profile"
+    app:startDestination="@id/profilePage">
+
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.example.onlineveterinarydoctor.presentation.nav_profile.ProfilePage"
+        android:label="page_profile"
+        tools:layout="@layout/page_profile" />
+    <fragment
+        android:id="@+id/languageScreen"
+        android:name="com.example.onlineveterinarydoctor.presentation.nav_profile.screens.LanguageScreen"
+        android:label="screen_language"
+        tools:layout="@layout/screen_language" />
+</navigation>

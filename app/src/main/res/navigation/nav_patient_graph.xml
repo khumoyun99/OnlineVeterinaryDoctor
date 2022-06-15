@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_patient"
+    app:startDestination="@id/patientPage">
+
+    <fragment
+        android:id="@+id/patientPage"
+        android:name="com.example.onlineveterinarydoctor.presentation.nav_patient.PatientPage"
+        android:label="@string/patient"
+        tools:layout="@layout/page_patient" >
+        <action
+            android:id="@+id/action_patientPage_to_messagesPatientScreen"
+            app:destination="@id/messagesPatientScreen" />
+        <action
+            android:id="@+id/action_patientPage_to_patientAnimalsScreen"
+            app:destination="@id/patientAnimalsScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/messagesPatientScreen"
+        android:name="com.example.onlineveterinarydoctor.presentation.nav_patient.screens.MessagesPatientScreen"
+        android:label="Messages"
+        tools:layout="@layout/screen_messages_patient" >
+        <argument
+            android:name="Patient"
+            app:argType="com.example.onlineveterinarydoctor.presentation.nav_patient.models.Patient" />
+    </fragment>
+    <fragment
+        android:id="@+id/patientAnimalsScreen"
+        android:name="com.example.onlineveterinarydoctor.presentation.nav_patient.screens.PatientAnimalsScreen"
+        android:label="screen_patient_animals"
+        tools:layout="@layout/screen_patient_animals" >
+        <action
+            android:id="@+id/action_patientAnimalsScreen_to_animalInfoScreeen"
+            app:destination="@id/animalInfoScreeen" />
+        <argument
+            android:name="Patient"
+            app:argType="com.example.onlineveterinarydoctor.presentation.nav_patient.models.Patient" />
+    </fragment>
+    <fragment
+        android:id="@+id/animalInfoScreeen"
+        android:name="com.example.onlineveterinarydoctor.presentation.nav_patient.screens.AnimalInfoScreen"
+        android:label="screeen_animal_info"
+        tools:layout="@layout/screeen_animal_info" >
+        <argument
+            android:name="Animal"
+            app:argType="com.example.onlineveterinarydoctor.presentation.nav_patient.models.Animal" />
+    </fragment>
+</navigation>
