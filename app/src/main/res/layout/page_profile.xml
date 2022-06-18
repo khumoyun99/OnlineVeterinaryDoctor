@@ -1,394 +1,397 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="10dp"
     android:background="@color/white"
     tools:context=".presentation.nav_profile.ProfilePage">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clProfile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="150dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clProfile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="50dp"
-            android:visibility="visible">
+            android:id="@+id/constraintLayoutProfile"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/background_profile"
+            android:gravity="center"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayoutProfile"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_marginTop="34dp"
-                android:background="@drawable/background_profile"
-                android:gravity="center"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgProfileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_bg_profile_person" />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgProfileImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="3dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_bg_profile_person" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_end="37dp" />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:background="#66FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/guideline1" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_img_profile_camera"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/guideline1" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/profileName"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="24dp"
-                android:text="A.B.Bozorov"
-                android:textColor="#42445A"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraintLayoutProfile" />
+                android:layout_height="1dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_end="37dp" />
 
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvProfileName"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="60dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profileName">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EFF4FA"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:background="#70ADEE" />
-
-                    <EditText
-                        android:id="@+id/etProfileName"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="9.3"
-                        android:background="#EFF4FA"
-                        android:hint="@string/name"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="10dp"
-                        android:singleLine="true"
-                        android:textColor="#42445A"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/ic_img_edit_pencil" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvProfileEmail"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvProfileName">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EFF4FA"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:background="#70ADEE" />
-
-                    <EditText
-                        android:id="@+id/etProfileEmail"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="9.8"
-                        android:background="#EFF4FA"
-                        android:hint="@string/email"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="10dp"
-                        android:singleLine="true"
-                        android:textColor="#42445A"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvProfilePhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintBottom_toTopOf="@id/cvProfileAddress"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvProfileEmail">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EFF4FA"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:background="#70ADEE" />
-
-                    <EditText
-                        android:id="@+id/etProfilePhoneNumber"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="9.8"
-                        android:background="#EFF4FA"
-                        android:hint="@string/phone_number"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="10dp"
-                        android:singleLine="true"
-                        android:textColor="#42445A"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvProfileAddress"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintBottom_toTopOf="@id/cvProfileWorkExperience"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvProfilePhoneNumber">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EFF4FA"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:background="#70ADEE" />
-
-                    <EditText
-                        android:id="@+id/etProfileAddress"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="9.8"
-                        android:background="#EFF4FA"
-                        android:hint="@string/address"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="10dp"
-                        android:singleLine="true"
-                        android:textColor="#42445A"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvProfileWorkExperience"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintBottom_toTopOf="@id/cvProfileEducation"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvProfileAddress">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EFF4FA"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:background="#70ADEE" />
-
-                    <TextView
-                        android:id="@+id/etProfileWorkExperience"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="9.3"
-                        android:background="#EFF4FA"
-                        android:text="@string/work_experience"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="10dp"
-                        android:gravity="center_vertical"
-                        android:singleLine="true"
-                        android:textColor="#42445A"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/ic_add" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvProfileEducation"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="21dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/btnProfileSave"
-                app:layout_constraintTop_toBottomOf="@id/cvProfileWorkExperience">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#EFF4FA"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.2"
-                        android:background="#70ADEE" />
-
-                    <TextView
-                        android:id="@+id/etProfileEducaton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="9.3"
-                        android:background="#EFF4FA"
-                        android:text="@string/education"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="10dp"
-                        android:gravity="center_vertical"
-                        android:singleLine="true"
-                        android:textColor="#42445A"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/ic_add" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/btnProfileSave"
-                android:layout_width="170dp"
-                android:layout_height="32dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="5dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:visibility="visible"
-                app:cardBackgroundColor="#70ADEE"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="0dp"
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="#66FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cvProfileEducation">
+                app:layout_constraintTop_toBottomOf="@id/guideline1" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/save"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="normal" />
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_img_profile_camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/guideline1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="24dp"
+            android:hint="@string/name"
+            android:textColor="#42445A"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayoutProfile" />
 
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cvProfileEmail"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProfileName"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF4FA"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="#70ADEE" />
+
+                <EditText
+                    android:id="@+id/etProfileName"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.3"
+                    android:background="#EFF4FA"
+                    android:enabled="false"
+                    android:hint="@string/name"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="#42445A"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/imgEditPencil"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_img_edit_pencil" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cvProfilePhoneNumber"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvProfileName">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF4FA"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="#70ADEE" />
+
+                <EditText
+                    android:id="@+id/etProfileEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.8"
+                    android:background="#EFF4FA"
+                    android:enabled="false"
+                    android:hint="@string/email"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="#42445A"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfilePhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cvProfileAddress"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvProfileEmail">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF4FA"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="#70ADEE" />
+
+                <EditText
+                    android:id="@+id/etProfilePhoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.8"
+                    android:background="#EFF4FA"
+                    android:enabled="false"
+                    android:hint="@string/phone_number"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="#42445A"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfileAddress"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cvProfileWorkExperience"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvProfilePhoneNumber">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF4FA"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="#70ADEE" />
+
+                <EditText
+                    android:id="@+id/etProfileAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.8"
+                    android:background="#EFF4FA"
+                    android:enabled="false"
+                    android:hint="@string/address"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="#42445A"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfileWorkExperience"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toTopOf="@id/cvProfileEducation"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvProfileAddress">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF4FA"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="#70ADEE" />
+
+                <TextView
+                    android:id="@+id/etProfileWorkExperience"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.3"
+                    android:background="#EFF4FA"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:text="@string/work_experience"
+                    android:textColor="#42445A"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/imgAddWorkIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_add" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvProfileEducation"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvProfileWorkExperience">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF4FA"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:background="#70ADEE" />
+
+                <TextView
+                    android:id="@+id/etProfileEducaton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9.3"
+                    android:background="#EFF4FA"
+                    android:gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:text="@string/education"
+                    android:textColor="#42445A"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/imgAddEducationIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_add" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnProfileSave"
+            android:layout_width="170dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:cardBackgroundColor="#70ADEE"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvProfileEducation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

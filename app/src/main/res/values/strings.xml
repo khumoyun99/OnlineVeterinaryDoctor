@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Online Veterinary Doctor</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="web_client_id">535340234356-v4poo64kpmg0h4g7n0ll9ts8if81g14o.apps.googleusercontent.com</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="patient">Patient</string>
     <string name="medicine">Medicine</string>
@@ -16,4 +17,10 @@
     <string name="save">Save</string>
     <string name="work_experience">Work experience</string>
     <string name="education">Education</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget password</string>
+    <string name="log_in">Log in</string>
+    <string name="dont_have_an_account_sign_up">Don\'t have an account? <b>Sign Up</b> </string>
+    <string name="log_in_with_google">Log in with Google</string>
 </resources>

@@ -38,31 +38,31 @@ class MedicineOrderScreen:Fragment(R.layout.screen_medicine_orderes) {
     private fun loadData() {
         ordersList = ArrayList()
 
-        for (i in 0 until 5) {
-            ordersList.add(
-                Orders(
-                    id = i,
-                    patient = Patient(
-                        i ,
-                        "Xakimova Feruza" ,
-                        "feruza@mail.ru" ,
-                        R.drawable.img ,
-                        "999",
-                        "Xonqa tum",
-                        arrayListOf()
-                    ),
-                    Medicines(
-                        i ,
-                        "Otoclean Ear Cleaner" ,
-                        "" ,
-                        125800 ,
-                        "Nematov A.B" ,
-                        R.drawable.img_dogs_otoclean_pr
-                    ),
-                    3
-                )
-            )
-
-        }
+//        for (i in 0 until 5) {
+//            ordersList.add(
+//                Orders(
+//                    id = i,
+//                    patient = Patient(
+//                        i ,
+//                        "Xakimova Feruza" ,
+//                        "feruza@mail.ru" ,
+//                        R.drawable.img ,
+//                        "999",
+//                        "Xonqa tum",
+//                        arrayListOf()
+//                    ),
+//                    Medicines(
+//                        i ,
+//                        "Otoclean Ear Cleaner" ,
+//                        "" ,
+//                        125800 ,
+//                        "Nematov A.B" ,
+//                        R.drawable.img_dogs_otoclean_pr
+//                    ),
+//                    3
+//                )
+//            )
+//
+//        }
     }
 }

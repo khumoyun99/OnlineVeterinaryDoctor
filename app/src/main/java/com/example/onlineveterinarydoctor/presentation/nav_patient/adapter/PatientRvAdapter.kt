@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.onlineveterinarydoctor.R
 import com.example.onlineveterinarydoctor.databinding.ItemRvPatientBinding
 import com.example.onlineveterinarydoctor.presentation.nav_patient.models.Patient
+import com.squareup.picasso.Picasso
 
 class PatientRvAdapter(var listener : OnPatientItemClickListener):
     RecyclerView.Adapter<PatientRvAdapter.MyPatientVH>() {
@@ -27,14 +29,14 @@ class PatientRvAdapter(var listener : OnPatientItemClickListener):
 
         fun onBind(patient : Patient) {
             itemRvPatientBinding.apply {
-                imgClientPhoto.setImageResource(patient.img)
+                Picasso.get().load(patient.img).error(R.drawable.ic_profile_person)
+                    .into(imgClientPhoto)
                 tvClientName.text = patient.name
                 tvClientAddress.text = patient.address
                 tvClientPhoneNumber.text = patient.phoneNumber
             }
         }
     }
-
 
     fun mySubmitList(patientList : ArrayList<Patient>) {
         differConfig.currentList.clear()

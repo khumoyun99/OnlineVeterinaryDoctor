@@ -3,13 +3,13 @@ package com.example.onlineveterinarydoctor.presentation.nav_patient.models
 import java.io.Serializable
 
 data class Patient(
-    val id : Int ,
+    val id : String ,
     val name : String ,
     val email : String ,
-    val img : Int ,
+    val img : String ,
     val phoneNumber : String ,
     val address : String ,
-    val animalsList : ArrayList<Animal>
+    val animalsList : ArrayList<Animal>? = null
 ):Serializable
 
 data class Animal(

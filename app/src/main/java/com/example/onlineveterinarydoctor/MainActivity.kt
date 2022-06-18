@@ -11,7 +11,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineveterinarydoctor.databinding.ActivityMainBinding
 import com.example.onlineveterinarydoctor.utils.BottomBackStackController
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable

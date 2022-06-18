@@ -32,7 +32,7 @@ class PatientAnimalsScreen:Fragment(R.layout.screen_patient_animals) {
                 )
             }
         })
-        animalsRvAdapter.mySubmitList(args.patient.animalsList)
+        animalsRvAdapter.mySubmitList(args.patient.animalsList!!)
         val dividerItemDecoration = DividerItemDecoration(requireContext(),RecyclerView.VERTICAL)
         rvAnimals.addItemDecoration(dividerItemDecoration)
         rvAnimals.setHasFixedSize(true)
