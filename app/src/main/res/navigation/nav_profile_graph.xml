@@ -8,11 +8,11 @@
     <fragment
         android:id="@+id/profilePage"
         android:name="com.example.onlineveterinarydoctor.presentation.nav_profile.ProfilePage"
-        android:label="page_profile"
+        android:label="@string/profile"
         tools:layout="@layout/page_profile" />
     <fragment
         android:id="@+id/languageScreen"
         android:name="com.example.onlineveterinarydoctor.presentation.nav_profile.screens.LanguageScreen"
-        android:label="screen_language"
+        android:label="@string/language"
         tools:layout="@layout/screen_language" />
 </navigation>

@@ -25,7 +25,7 @@ class LoginScreen:Fragment(R.layout.screen_login) {
 
     private val binding by viewBinding(ScreenLoginBinding::bind)
     private lateinit var firebaseAuth : FirebaseAuth
-    private lateinit var googleSignInClient:GoogleSignInClient
+    private lateinit var googleSignInClient : GoogleSignInClient
     private lateinit var firebaseDatabase : FirebaseDatabase
     private lateinit var reference : DatabaseReference
 
@@ -41,7 +41,7 @@ class LoginScreen:Fragment(R.layout.screen_login) {
             .requestIdToken(getString(R.string.web_client_id))
             .requestEmail()
             .build()
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(),gso)
+        googleSignInClient = GoogleSignIn.getClient(requireActivity() , gso)
 
 
         cvSignInGoogle.setOnClickListener {
@@ -98,11 +98,11 @@ class LoginScreen:Fragment(R.layout.screen_login) {
 
                             if (!isHave) {
                                 val account = Account(
-                                    user?.uid.toString() ,
-                                    user?.displayName.toString() ,
-                                    user?.phoneNumber.toString() ,
-                                    user?.email.toString() ,
-                                    user?.photoUrl.toString()
+                                    uid = user?.uid.toString() ,
+                                    displayName = user?.displayName.toString() ,
+                                    email = user?.email.toString() ,
+                                    phoneNumber = user?.phoneNumber?:"" ,
+                                    photoUrl = user?.photoUrl.toString() ,
                                 )
                                 reference.child(user?.uid ?: "").setValue(account)
                                     .addOnCompleteListener {
@@ -131,9 +131,6 @@ class LoginScreen:Fragment(R.layout.screen_login) {
                 }
             }
     }
-
-
-
 
 
 }

@@ -13,7 +13,7 @@ data class Patient(
 ):Serializable
 
 data class Animal(
-    val id : Int ,
+    val id : String ,
     val type : String ,
     val name : String ,
     val age : String ,
@@ -22,6 +22,6 @@ data class Animal(
     val gender : String ,
     val weight : String ,
     val widthHeight : String ,
-    val image : Int ,
+    val image : String ,
     val additionalInfo : String
 ):Serializable

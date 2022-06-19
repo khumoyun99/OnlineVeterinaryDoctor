@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/patientAnimalsScreen"
         android:name="com.example.onlineveterinarydoctor.presentation.nav_patient.screens.PatientAnimalsScreen"
-        android:label="screen_patient_animals"
+        android:label="@string/animals"
         tools:layout="@layout/screen_patient_animals" >
         <action
             android:id="@+id/action_patientAnimalsScreen_to_animalInfoScreeen"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/animalInfoScreeen"
         android:name="com.example.onlineveterinarydoctor.presentation.nav_patient.screens.AnimalInfoScreen"
-        android:label="screeen_animal_info"
+        android:label="@string/animals_info"
         tools:layout="@layout/screeen_animal_info" >
         <argument
             android:name="Animal"

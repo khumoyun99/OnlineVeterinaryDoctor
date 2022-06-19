@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="55dp"
+    android:overScrollMode="never"
     tools:context=".presentation.nav_medicine.screens.MyMedicinesScreen">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMedicine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:overScrollMode="never"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_rv_medicine" />
 

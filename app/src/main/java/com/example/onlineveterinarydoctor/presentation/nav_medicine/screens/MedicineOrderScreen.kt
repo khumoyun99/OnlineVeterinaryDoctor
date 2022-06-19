@@ -7,9 +7,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineveterinarydoctor.R
 import com.example.onlineveterinarydoctor.databinding.ScreenMedicineOrderesBinding
 import com.example.onlineveterinarydoctor.presentation.nav_medicine.adapters.OrderMedicineRvAdapter
-import com.example.onlineveterinarydoctor.presentation.nav_medicine.models.Medicines
 import com.example.onlineveterinarydoctor.presentation.nav_medicine.models.Orders
-import com.example.onlineveterinarydoctor.presentation.nav_patient.models.Patient
 import com.example.onlineveterinarydoctor.utils.scope
 
 class MedicineOrderScreen:Fragment(R.layout.screen_medicine_orderes) {
@@ -21,22 +19,22 @@ class MedicineOrderScreen:Fragment(R.layout.screen_medicine_orderes) {
     override fun onViewCreated(view : View , savedInstanceState : Bundle?) = binding.scope {
         super.onViewCreated(view , savedInstanceState)
 
-        loadData()
-        orderMedicineRvAdapter =
-            OrderMedicineRvAdapter(object:OrderMedicineRvAdapter.OnItemTouchClickListener {
-                override fun onItem(orders : Orders) {
-
-                }
-            })
-        orderMedicineRvAdapter.mySubmitList(ordersList)
-
-        rvOrders.setHasFixedSize(true)
-        rvOrders.adapter = orderMedicineRvAdapter
+      //  loadData()
+//        orderMedicineRvAdapter =
+//            OrderMedicineRvAdapter(object:OrderMedicineRvAdapter.OnItemTouchClickListener {
+//                override fun onItem(orders : Orders) {
+//
+//                }
+//            })
+//        orderMedicineRvAdapter.mySubmitList(ordersList)
+//
+//        rvOrders.setHasFixedSize(true)
+//        rvOrders.adapter = orderMedicineRvAdapter
 
     }
 
     private fun loadData() {
-        ordersList = ArrayList()
+      //  ordersList = ArrayList()
 
 //        for (i in 0 until 5) {
 //            ordersList.add(

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="55dp"
+    android:overScrollMode="never"
     tools:context=".presentation.nav_medicine.screens.AddMedicineScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="15dp">
+        android:overScrollMode="never"
+        android:paddingHorizontal="40dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -29,6 +30,7 @@
             app:boxStrokeWidth="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMedicineName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="15dp"
@@ -56,6 +58,7 @@
             app:boxStrokeWidth="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMedicineDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="15dp"
@@ -82,6 +85,7 @@
             app:boxStrokeWidth="1dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etMedicinePrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="15dp"
@@ -98,7 +102,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_dogs_otoclean_pr" />
+            android:src="@drawable/img_medicine_medicine" />
 
 
         <com.google.android.material.button.MaterialButton

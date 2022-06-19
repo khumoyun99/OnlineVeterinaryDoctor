@@ -14,7 +14,6 @@ import com.example.onlineveterinarydoctor.utils.visible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
-import kotlin.math.acos
 
 class ProfilePage:Fragment(R.layout.page_profile) {
 
@@ -49,7 +48,7 @@ class ProfilePage:Fragment(R.layout.page_profile) {
                 etProfileName.setText(account.displayName)
                 etProfileEmail.setText(account.email)
                 etProfilePhoneNumber.setText(account.phoneNumber)
-//                etProfileAddress.setText()
+                etProfileAddress.setText(account.address)
 
             }
 
@@ -87,6 +86,8 @@ class ProfilePage:Fragment(R.layout.page_profile) {
                     phoneNumber = phoneNumber ,
                     email = account.email.toString() ,
                     photoUrl = account.photoUrl.toString() ,
+                    address = address ,
+                    myMedicine = account.myMedicine
                 )
             ).addOnCompleteListener {
                 if (it.isSuccessful) {

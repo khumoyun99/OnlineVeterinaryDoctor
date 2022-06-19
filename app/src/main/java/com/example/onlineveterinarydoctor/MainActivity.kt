@@ -3,14 +3,18 @@ package com.example.onlineveterinarydoctor
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.get
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.internal.findRootView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineveterinarydoctor.databinding.ActivityMainBinding
 import com.example.onlineveterinarydoctor.utils.BottomBackStackController
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
@@ -48,11 +52,31 @@ class MainActivity:AppCompatActivity(R.layout.activity_main) {
 
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-//        bottomNavigationView.background = null
+        val bottomAppBar = findViewById<BottomAppBar>(R.id.bottomAppBar)
+
+        bottomNavigationView.background = null
+        bottomNavigationView.menu.getItem(1).isEnabled = false
+
+
+        val bottomAppBarBackground : MaterialShapeDrawable =
+            bottomAppBar.background as MaterialShapeDrawable
+
+        bottomAppBarBackground.shapeAppearanceModel =
+            bottomAppBarBackground.shapeAppearanceModel.toBuilder().setTopLeftCornerSize(
+                30F
+            ).setTopRightCornerSize(
+                30F
+            ).build()
+
+        binding.fab.setOnClickListener {
+            bottomNavigationView.menu.getItem(1).isEnabled = true
+            bottomNavigationView.selectedItemId = R.id.nav_patient
+        }
+
 
         val navGraphIds = listOf(
-            R.navigation.nav_patient_graph ,
             R.navigation.nav_medicine_graph ,
+            R.navigation.nav_patient_graph ,
             R.navigation.nav_profile_graph
         )
 
@@ -66,13 +90,14 @@ class MainActivity:AppCompatActivity(R.layout.activity_main) {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.patientPage ,
                 R.id.medicinePage ,
+                R.id.patientPage ,
                 R.id.profilePage
             )
         )
 
         controller.observe(this , Observer { navController ->
+            binding.toolbar.setupWithNavController(navController)
             setupActionBarWithNavController(navController , appBarConfiguration)
         })
 

@@ -1,12 +1,15 @@
 package com.example.onlineveterinarydoctor.presentation.nav_medicine.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.onlineveterinarydoctor.R
 import com.example.onlineveterinarydoctor.databinding.ItemRvMedicineBinding
 import com.example.onlineveterinarydoctor.presentation.nav_medicine.models.Medicines
+import com.squareup.picasso.Picasso
 
 class MedicineRvAdapter(val listener : OnItemTouchClickListener):
     RecyclerView.Adapter<MedicineRvAdapter.MyMedicineVH>() {
@@ -22,7 +25,8 @@ class MedicineRvAdapter(val listener : OnItemTouchClickListener):
 
         fun onBind(medicines : Medicines) {
             itemRvMedicineBinding.apply {
-                imgMedicineImage.setImageResource(medicines.imageUrl)
+//                Picasso.get().load(medicines.imageUrl!!).error(R.drawable.img_medicine_medicine)
+//                    .into(imgMedicineImage)
                 tvMedicineName.text = medicines.name
                 tvMedicineDescription.text = medicines.description
                 tvMedicinesDoctorsName.text = medicines.doctorsName
@@ -41,8 +45,9 @@ class MedicineRvAdapter(val listener : OnItemTouchClickListener):
             return oldItem.id == newItem.id
         }
 
+        @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem : Medicines , newItem : Medicines) : Boolean {
-            return oldItem == newItem
+            return oldItem==newItem
         }
     }
 

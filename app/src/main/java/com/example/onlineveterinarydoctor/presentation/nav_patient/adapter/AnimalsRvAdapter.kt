@@ -5,10 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.onlineveterinarydoctor.R
 import com.example.onlineveterinarydoctor.databinding.ItemRvAnimalsBinding
 import com.example.onlineveterinarydoctor.presentation.nav_patient.models.Animal
+import com.squareup.picasso.Picasso
 
-class AnimalsRvAdapter(val listener:OnAnimalsClickListener):RecyclerView.Adapter<AnimalsRvAdapter.MyAnimalsVH>() {
+class AnimalsRvAdapter(val listener : OnAnimalsClickListener):
+    RecyclerView.Adapter<AnimalsRvAdapter.MyAnimalsVH>() {
 
     inner class MyAnimalsVH(private val itemRvAnimalsBinding : ItemRvAnimalsBinding):
         RecyclerView.ViewHolder(itemRvAnimalsBinding.root) {
@@ -21,7 +24,8 @@ class AnimalsRvAdapter(val listener:OnAnimalsClickListener):RecyclerView.Adapter
 
         fun onBind(animal : Animal) {
             itemRvAnimalsBinding.apply {
-                imgAnimalPhoto.setImageResource(animal.image)
+                Picasso.get().load(animal.image).error(R.drawable.img_default_animals)
+                    .into(imgAnimalPhoto)
                 tvAnimalsName.text = animal.name
             }
         }

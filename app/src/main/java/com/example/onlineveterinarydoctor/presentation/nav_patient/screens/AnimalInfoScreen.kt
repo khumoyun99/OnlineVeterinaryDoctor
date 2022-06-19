@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineveterinarydoctor.R
 import com.example.onlineveterinarydoctor.databinding.ScreeenAnimalInfoBinding
 import com.example.onlineveterinarydoctor.utils.scope
+import com.squareup.picasso.Picasso
 
 class AnimalInfoScreen:Fragment(R.layout.screeen_animal_info) {
 
@@ -18,7 +19,16 @@ class AnimalInfoScreen:Fragment(R.layout.screeen_animal_info) {
     override fun onViewCreated(view : View , savedInstanceState : Bundle?) = binding.scope {
         super.onViewCreated(view , savedInstanceState)
 
-        imgAnimalPhoto.setImageResource(args.animal.image)
+        Picasso.get().load(args.animal.image).into(ivAnimalsImage)
+        etType.setText(args.animal.type)
+        etName.setText(args.animal.name)
+        etAge.setText(args.animal.age)
+        etColor.setText(args.animal.color)
+        etAnimalType.setText(args.animal.animalsType)
+        etGender.setText(args.animal.gender)
+        etAnimalWeight.setText(args.animal.weight)
+        etAnimalWidthHeight.setText(args.animal.widthHeight)
+        etAdditional.setText(args.animal.additionalInfo)
 
     }
 

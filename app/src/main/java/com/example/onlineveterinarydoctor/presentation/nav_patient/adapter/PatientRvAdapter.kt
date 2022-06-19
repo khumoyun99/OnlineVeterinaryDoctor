@@ -30,6 +30,7 @@ class PatientRvAdapter(var listener : OnPatientItemClickListener):
         fun onBind(patient : Patient) {
             itemRvPatientBinding.apply {
                 Picasso.get().load(patient.img).error(R.drawable.ic_profile_person)
+                    .placeholder(R.drawable.ic_profile_person)
                     .into(imgClientPhoto)
                 tvClientName.text = patient.name
                 tvClientAddress.text = patient.address

@@ -22,12 +22,12 @@ class OrderMedicineRvAdapter(val listener : OnItemTouchClickListener):
 
         fun onBind(orders : Orders) {
             itemRvOrdersBinding.apply {
-                imgOrderMedicineImage.setImageResource(orders.medicines.imageUrl)
-                tvOrderMedicineName.text = orders.medicines.name
-                tvOrderMedicinesClientName.text = orders.patient.name
-                tvOrderQuantity.text = "Soni:${orders.quantity} dona"
-                tvOrderMedicinePrise.text = "Narxi:${orders.medicines.price} so'm"
-                tvOrderMedicineTotal.text = "Umumiy summa:${(orders.quantity * orders.medicines.price)} so'm"
+//                imgOrderMedicineImage.setImageResource(orders.medicines.imageUrl)
+                //tvOrderMedicineName.text = orders.medicines.name
+//                tvOrderMedicinesClientName.text = orders.patient.name
+//                tvOrderQuantity.text = "Soni:${orders.quantity} dona"
+//                tvOrderMedicinePrise.text = "Narxi:${orders.medicines.price} so'm"
+//                tvOrderMedicineTotal.text = "Umumiy summa:${(orders.quantity * orders.medicines.price!!)} so'm"
             }
         }
     }
