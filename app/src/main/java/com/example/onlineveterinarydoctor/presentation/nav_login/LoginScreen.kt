@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.*
+import java.lang.Exception
 
 class LoginScreen:Fragment(R.layout.screen_login) {
 
@@ -87,37 +88,45 @@ class LoginScreen:Fragment(R.layout.screen_login) {
                     val user = firebaseAuth.currentUser
                     reference.addListenerForSingleValueEvent(object:ValueEventListener {
                         override fun onDataChange(snapshot : DataSnapshot) {
-                            val children = snapshot.children
-                            var isHave = false
-                            for (child in children) {
-                                if (child.key == user?.uid) {
-                                    isHave = true
-                                    break
-                                }
-                            }
+                            try {
 
-                            if (!isHave) {
-                                val account = Account(
-                                    uid = user?.uid.toString() ,
-                                    displayName = user?.displayName.toString() ,
-                                    email = user?.email.toString() ,
-                                    phoneNumber = user?.phoneNumber?:"" ,
-                                    photoUrl = user?.photoUrl.toString() ,
-                                )
-                                reference.child(user?.uid ?: "").setValue(account)
-                                    .addOnCompleteListener {
-                                        if (it.isSuccessful) {
-                                            val intent =
-                                                Intent(requireActivity() , MainActivity::class.java)
-                                            startActivity(intent)
-                                        } else {
-                                            showToast("${it.exception?.message}")
-                                        }
+                                val children = snapshot.children
+                                var isHave = false
+                                for (child in children) {
+                                    if (child.key == user?.uid) {
+                                        isHave = true
+                                        break
                                     }
-                            } else {
-                                val intent =
-                                    Intent(requireActivity() , MainActivity::class.java)
-                                startActivity(intent)
+                                }
+
+                                if (!isHave) {
+                                    val account = Account(
+                                        uid = user?.uid.toString() ,
+                                        displayName = user?.displayName.toString() ,
+                                        email = user?.email.toString() ,
+                                        phoneNumber = user?.phoneNumber ?: "" ,
+                                        photoUrl = user?.photoUrl.toString() ,
+                                    )
+                                    reference.child(user?.uid ?: "").setValue(account)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                val intent =
+                                                    Intent(
+                                                        requireActivity() ,
+                                                        MainActivity::class.java
+                                                    )
+                                                startActivity(intent)
+                                            } else {
+                                                showToast("${it.exception?.message}")
+                                            }
+                                        }
+                                } else {
+                                    val intent =
+                                        Intent(requireActivity() , MainActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            } catch (e : Exception) {
+                                showToast(e.message.toString())
                             }
                         }
 

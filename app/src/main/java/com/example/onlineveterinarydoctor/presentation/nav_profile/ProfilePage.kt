@@ -33,23 +33,26 @@ class ProfilePage:Fragment(R.layout.page_profile) {
 
         reference.addValueEventListener(object:ValueEventListener {
             override fun onDataChange(snapshot : DataSnapshot) {
-                val children = snapshot.children
-                for (child in children) {
-                    val user = child.getValue(Account::class.java)
-                    if (user?.uid == firebaseAuth.uid && user != null) {
-                        account = user
+                try {
+                    val children = snapshot.children
+                    for (child in children) {
+                        val user = child.getValue(Account::class.java)
+                        if (user?.uid == firebaseAuth.uid && user != null) {
+                            account = user
+                        }
                     }
+                    Picasso.get().load(account.photoUrl).error(R.drawable.ic_profile_person)
+                        .placeholder(R.drawable.ic_profile_person)
+                        .into(imgProfileImage)
+                    tvProfileName.text = account.displayName
+                    etProfileName.setText(account.displayName)
+                    etProfileEmail.setText(account.email)
+                    etProfilePhoneNumber.setText(account.phoneNumber)
+                    etProfileAddress.setText(account.address)
+
+                } catch (e : Exception) {
+                    showToast(e.message.toString())
                 }
-
-                Picasso.get().load(account.photoUrl).error(R.drawable.ic_profile_person)
-                    .placeholder(R.drawable.ic_profile_person)
-                    .into(imgProfileImage)
-                tvProfileName.text = account.displayName
-                etProfileName.setText(account.displayName)
-                etProfileEmail.setText(account.email)
-                etProfilePhoneNumber.setText(account.phoneNumber)
-                etProfileAddress.setText(account.address)
-
             }
 
 

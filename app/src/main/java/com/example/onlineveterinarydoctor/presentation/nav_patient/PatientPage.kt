@@ -1,27 +1,21 @@
 package com.example.onlineveterinarydoctor.presentation.nav_patient
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import by.kirich1409.viewbindingdelegate.internal.findRootView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineveterinarydoctor.R
 import com.example.onlineveterinarydoctor.databinding.PagePatientBinding
-import com.example.onlineveterinarydoctor.presentation.nav_login.models.Account
+import com.example.onlineveterinarydoctor.presentation.activity.ChatActivity
 import com.example.onlineveterinarydoctor.presentation.nav_patient.adapter.PatientRvAdapter
 import com.example.onlineveterinarydoctor.presentation.nav_patient.models.Animal
 import com.example.onlineveterinarydoctor.presentation.nav_patient.models.Patient
 import com.example.onlineveterinarydoctor.presentation.nav_patient.screens.models.MyAnimal
 import com.example.onlineveterinarydoctor.presentation.nav_patient.screens.models.UserAccount
-import com.example.onlineveterinarydoctor.utils.gone
 import com.example.onlineveterinarydoctor.utils.scope
 import com.example.onlineveterinarydoctor.utils.showToast
-import com.example.onlineveterinarydoctor.utils.visible
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -45,17 +39,6 @@ class PatientPage:Fragment(R.layout.page_patient) {
 
         patientRvAdapter = PatientRvAdapter(object:PatientRvAdapter.OnPatientItemClickListener {
             override fun onPatClick(patient : Patient) {
-                val bottomNav =
-                    findRootView(requireActivity()).findViewById<BottomNavigationView>(R.id.bottom_navigation)
-                bottomNav.gone()
-
-                val bottomApp =
-                    findRootView(requireActivity()).findViewById<BottomAppBar>(R.id.bottomAppBar)
-                bottomApp.gone()
-
-                val fab =
-                    findRootView(requireActivity()).findViewById<FloatingActionButton>(R.id.fab)
-                fab.gone()
 
                 findNavController().navigate(
                     PatientPageDirections.actionPatientPageToPatientAnimalsScreen(
@@ -66,104 +49,92 @@ class PatientPage:Fragment(R.layout.page_patient) {
             }
 
             override fun onMessageClick(patient : Patient) {
-                val bottomNav =
-                    findRootView(requireActivity()).findViewById<BottomNavigationView>(R.id.bottom_navigation)
-                bottomNav.gone()
-
-                val bottomApp =
-                    findRootView(requireActivity()).findViewById<BottomAppBar>(R.id.bottomAppBar)
-                bottomApp.gone()
-
-                val fab =
-                    findRootView(requireActivity()).findViewById<FloatingActionButton>(R.id.fab)
-                fab.gone()
-
-
-                findNavController().navigate(
-                    PatientPageDirections.actionPatientPageToMessagesPatientScreen(
-                        patient
-                    )
-                )
-
-                val toolbar = findRootView(requireActivity()).findViewById<Toolbar>(R.id.toolbar)
-                toolbar.title = patient.name
+                val intent = Intent(requireActivity() , ChatActivity::class.java)
+                intent.putExtra("patient",patient)
+                startActivity(intent)
             }
         })
 
-        reference.addValueEventListener(object:ValueEventListener {
-            override fun onDataChange(snapshot : DataSnapshot) {
-                val children = snapshot.children
-                for (child in children) {
-                    val user = child.getValue(UserAccount::class.java)
+        try {
+            reference.addValueEventListener(object:ValueEventListener {
+                override fun onDataChange(snapshot : DataSnapshot) {
+                    try {
+                        patientList.clear()
+                        val children = snapshot.children
+                        for (child in children) {
+                            val user = child.getValue(UserAccount::class.java)
 
-                    val animalsList : ArrayList<Animal> = ArrayList()
-                    reference.child("${user?.uid}/myAnimals").addValueEventListener(object:ValueEventListener {
-                        override fun onDataChange(snapshot : DataSnapshot) {
-                            val childrenAnimals = snapshot.children
-                            for (childrenAnimal in childrenAnimals) {
-                                val myAnimal = childrenAnimal.getValue(MyAnimal::class.java)
-                                if (myAnimal != null) {
-                                    animalsList.add(
-                                        Animal(
-                                            id = myAnimal.uid.toString() ,
-                                            type = myAnimal.animalType.toString() ,
-                                            name = myAnimal.name.toString() ,
-                                            age = myAnimal.age.toString() ,
-                                            color = myAnimal.color.toString() ,
-                                            animalsType = myAnimal.animalType.toString() ,
-                                            gender = myAnimal.gender.toString() ,
-                                            weight = myAnimal.weight.toString() ,
-                                            widthHeight = myAnimal.widHeight.toString() ,
-                                            image = myAnimal.photoUrl.toString() ,
-                                            additionalInfo = myAnimal.additional.toString()
-                                        )
-                                    )
-                                }
-                            }
+                            val animalsList : ArrayList<Animal> = ArrayList()
+                            reference.child("${user?.uid}/myAnimals")
+                                .addValueEventListener(object:ValueEventListener {
+                                    override fun onDataChange(snapshot : DataSnapshot) {
+                                        try {
+                                            val childrenAnimals = snapshot.children
+                                            for (childrenAnimal in childrenAnimals) {
+                                                val myAnimal =
+                                                    childrenAnimal.getValue(MyAnimal::class.java)
+                                                if (myAnimal != null) {
+                                                    animalsList.add(
+                                                        Animal(
+                                                            id = myAnimal.uid.toString() ,
+                                                            type = myAnimal.animalType.toString() ,
+                                                            name = myAnimal.name.toString() ,
+                                                            age = myAnimal.age.toString() ,
+                                                            color = myAnimal.color.toString() ,
+                                                            animalsType = myAnimal.animalType.toString() ,
+                                                            gender = myAnimal.gender.toString() ,
+                                                            weight = myAnimal.weight.toString() ,
+                                                            widthHeight = myAnimal.widHeight.toString() ,
+                                                            image = myAnimal.photoUrl.toString() ,
+                                                            additionalInfo = myAnimal.additional.toString()
+                                                        )
+                                                    )
+                                                }
+                                            }
+                                        } catch (e : Exception) {
+                                            showToast("three ${e.message.toString()}")
+                                        }
+
+                                    }
+
+                                    override fun onCancelled(error : DatabaseError) {
+                                        showToast(error.message)
+                                    }
+                                })
+
+                            patientList.add(
+                                Patient(
+                                    id = user?.uid ?: "" ,
+                                    name = user?.displayName ?: "" ,
+                                    email = user?.email ?: "" ,
+                                    img = user?.photoUrl ?: "" ,
+                                    phoneNumber = user?.phoneNumber ?: "" ,
+                                    address = user?.address ?: "" ,
+                                    animalsList = animalsList
+                                )
+                            )
                         }
 
-                        override fun onCancelled(error : DatabaseError) {
-                            showToast(error.message)
-                        }
-                    })
+                        patientRvAdapter.mySubmitList(patientList)
+                        rvPatient.setHasFixedSize(true)
+                        rvPatient.adapter = patientRvAdapter
+                        patientRvAdapter.notifyDataSetChanged()
 
-                    patientList.add(
-                        Patient(
-                            id = user?.uid ?: "" ,
-                            name = user?.displayName ?: "" ,
-                            email = user?.email ?: "" ,
-                            img = user?.photoUrl ?: "" ,
-                            phoneNumber = user?.phoneNumber ?: "" ,
-                            address = user?.address ?: "" ,
-                            animalsList = animalsList
-                        )
-                    )
+                    } catch (e : Exception) {
+                        showToast("two ${e.message.toString()}")
+                    }
+
                 }
-                patientRvAdapter.mySubmitList(patientList)
-                rvPatient.setHasFixedSize(true)
-                rvPatient.adapter = patientRvAdapter
-                patientRvAdapter.notifyDataSetChanged()
-            }
 
-            override fun onCancelled(error : DatabaseError) {
+                override fun onCancelled(error : DatabaseError) {
+                    showToast(error.message)
 
-            }
-        })
+                }
+            })
+        } catch (e : Exception) {
+            showToast("one ${e.message.toString()}")
+        }
 
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val bottomNav =
-            findRootView(requireActivity()).findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNav.visible()
-
-        val bottomApp =
-            findRootView(requireActivity()).findViewById<BottomAppBar>(R.id.bottomAppBar)
-        bottomApp.visible()
-
-        val fab = findRootView(requireActivity()).findViewById<FloatingActionButton>(R.id.fab)
-        fab.visible()
     }
 }

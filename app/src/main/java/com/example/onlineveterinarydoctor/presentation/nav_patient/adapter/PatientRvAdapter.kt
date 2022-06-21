@@ -40,7 +40,6 @@ class PatientRvAdapter(var listener : OnPatientItemClickListener):
     }
 
     fun mySubmitList(patientList : ArrayList<Patient>) {
-        differConfig.currentList.clear()
         differConfig.submitList(patientList)
     }
 

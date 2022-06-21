@@ -17,7 +17,7 @@
     <string name="save">Save</string>
     <string name="work_experience">Work experience</string>
     <string name="education">Education</string>
-    <string name="login">Login</string>
+    <string name="login">Doctor Login</string>
     <string name="password">Password</string>
     <string name="forget_password">Forget password</string>
     <string name="log_in">Log in</string>
@@ -36,4 +36,16 @@
     <string name="additions">Additions</string>
     <string name="edit">Edit</string>
     <string name="language">Language</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="enter_message">Enter message</string>
+    <string name="send">Send</string>
+    <string name="time">Time</string>
 </resources>

@@ -47,6 +47,4 @@ class MedicinePage:Fragment(R.layout.page_medicine) {
         return super.onOptionsItemSelected(item)
 
     }
-
-
 }

@@ -90,22 +90,6 @@ dependencies {
     implementation 'com.github.zjywill:OverwatchProgress:1.6'
 
     /**
-     * Lottie Animation
-     */
-    def lottieVersion = "5.0.1"
-    implementation "com.airbnb.android:lottie:$lottieVersion"
-
-    /**
-     * Toast Library
-     */
-    implementation 'io.github.shashank02051997:FancyToast:2.0.1'
-
-    /**
-     * DotsIndicator lib
-     */
-    implementation 'com.tbuonomo:dotsindicator:4.2'
-
-    /**
      * Picasso
      */
     implementation 'com.squareup.picasso:picasso:2.71828'

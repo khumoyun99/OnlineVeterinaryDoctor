@@ -3,14 +3,12 @@ package com.example.onlineveterinarydoctor
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.get
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import by.kirich1409.viewbindingdelegate.internal.findRootView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlineveterinarydoctor.databinding.ActivityMainBinding
 import com.example.onlineveterinarydoctor.utils.BottomBackStackController
